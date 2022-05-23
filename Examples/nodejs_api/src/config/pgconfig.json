@@ -1,0 +1,6 @@
+{
+    "host": "meters.cex1urzsnwyj.us-east-1.rds.amazonaws.com",
+    "user": "postgres",
+    "password": "d92eeIfifCl3snNmiVrx",
+    "database": "meterDB"
+} 
