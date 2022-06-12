@@ -34,7 +34,11 @@ const int TIMER_INTERRUPT_FREQ = 10000;
 EspMQTTClient client(
   "Apartamentos Blanco.com",
   "Tigo1234",
-  "192.168.0.8"
+  "3.84.5.159",
+  "mcu",
+  "Rb63H7T8KMmi",
+  "MCU",
+  1883
 );
 
 void setup()
