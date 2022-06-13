@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "state": "free"
+    },
+    {
+        "id": 2,
+        "state": "free"
+    },
+    {
+        "id": 3,
+        "state": "free"
+    },
+    {
+        "id": 4,
+        "state": "free"
+    },
+    {
+        "id": 5,
+        "state": "free"
+    },
+    {
+        "id": 6,
+        "state": "free"
+    },
+    {
+        "id": 7,
+        "state": "in-use"
+    },
+    {
+        "id": 8,
+        "state": "in-use"
+    },
+    {
+        "id": 9,
+        "state": "free"
+    },
+    {
+        "id": 10,
+        "state": "free"
+    }
+]
