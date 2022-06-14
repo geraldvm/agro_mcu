@@ -28,6 +28,18 @@ const getMeasures = (request, response) => {
     })
   }
 
+  const getMeasureId = (request, response) => {
+    const id = parseInt(request.params.idMeasure)
+  
+    pool.query('SELECT * FROM measure WHERE idMeasure = $1', [id], (error, results) => {
+      if (error) {
+        throw error
+      }
+      response.status(200).json(results.rows)
+    })
+  }
+
+
 /**
  * Insert measure data to MeterDB
  * @param {*} request 
@@ -79,11 +91,34 @@ const insertDataPar = (request, response) => {
     response.status(201).send(`New measure added`)
   })
 }
-  
+
+/**
+* Insert data to DataParameterDB
+* @param {*} request 
+* @param {*} response 
+*/
+
+const updateDataPar = (request, response) => {
+  const id = parseInt(request.params.idData)
+  const {startTime, timelapse, weekday} = request.body
+  console.log(request.body)
+  pool.query('UPDATE dataparameters SET startTime = $1, timelapse = $2, weekday = $3 WHERE idData = $4', 
+          [startTime, timelapse, weekday, id], 
+          (error, results) => {
+            if (error) {
+              response.status(404).send();
+              throw error
+            }
+            response.status(201).send(`Measure updated`)
+          })
+}
+
 
 module.exports = {
   getMeasures,
+  getMeasureId,
   insertMeasure,
   getDataPar,
-  insertDataPar
+  insertDataPar,
+  updateDataPar
 }

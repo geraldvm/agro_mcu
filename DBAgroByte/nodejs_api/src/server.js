@@ -2,6 +2,7 @@
 
 const express = require('express'); //Uses express module
 const morgan = require('morgan');
+const bodyParser = require('body-parser')
 const https = require('https');
 const fs = require('fs');
 
@@ -9,7 +10,12 @@ const db = require('./queries') //SET db queries
 const app =express();
 const PORT = 3030; //Listen Port
 
-
+app.use(bodyParser.json())
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+)
 
 
 //Settings
@@ -26,9 +32,11 @@ app.use(express.json());// JSON file supported
 
 // Measures
 app.get('/api/dev/measures', db.getMeasures)
+app.get('/api/dev/measures/:idMeasure', db.getMeasureId)
 app.post('/api/newMeasure', db.insertMeasure)
 app.get('/api/datapar', db.getDataPar)
 app.post('/api/newDatapar', db.insertDataPar)
+app.put('/api/updateDatapar/:idData', db.updateDataPar)
 
 
 app.get('/status', (req, res) => {
