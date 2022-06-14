@@ -18,17 +18,16 @@
 #include <Wire.h>
 
 // I2C Variables
-byte rcvData;
 const int16_t I2C_SLAVE = 0x14;
 
 // Defining MQTT Topics
-const String topicTemperature = "Temperature";
-const String topicHumidity = "Humidity";
+const String topicMeasures = "Measures";
 const String topicIrrigation = "Irrigation";
 
 // Defining interruptions
 unsigned long previousInterruption = 0;
 const int TIMER_INTERRUPT_FREQ = 10000;
+
 
 // MQTT setup
 EspMQTTClient client(
@@ -57,6 +56,7 @@ void onConnectionEstablished()
 
 void processMQTTMessage(String message){
   Serial.println("MQTT Incoming");
+  Serial.println(message);
   if(message=="true"){
     sendI2CMessage(1);
   }else{
@@ -73,12 +73,17 @@ void sendI2CMessage(int message){
 
 void loop()
 {
+  // Defining measures variables
+  byte temperature;
+  byte humidity;
+
   client.loop(); // must be called once per loop.
   delay(300);
 
   if(doTimerInterrupt()){
-    readMeasuresFromSlave(topicTemperature);
-    readMeasuresFromSlave(topicHumidity);
+    temperature = readMeasuresFromSlave();
+    humidity = readMeasuresFromSlave();
+    sendMQTTMeasures(temperature, humidity);
   }
 }
 
@@ -91,13 +96,20 @@ bool doTimerInterrupt(){
   return false;
 }
 
-void readMeasuresFromSlave(String measure){
+byte readMeasuresFromSlave(){
+  byte rcvData;
   Serial.println("I2C Request");
   Wire.requestFrom(I2C_SLAVE, 1);
   if(Wire.available()){
     rcvData = Wire.read();
-    Serial.println("Sending measure to topic: " + measure);
-    client.publish(measure, String(rcvData));
   }
+  return rcvData;
+}
+
+void sendMQTTMeasures(byte temp, byte humidity){
+  const String messageToSend = String(temp)+","+String(humidity);
+  Serial.println("Sending measures to MQTT");
+  Serial.println(messageToSend);
+  client.publish(topicMeasures, messageToSend);
   return;
 }
