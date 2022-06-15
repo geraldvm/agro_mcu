@@ -31,8 +31,8 @@ const int TIMER_INTERRUPT_FREQ = 10000;
 
 // MQTT setup
 EspMQTTClient client(
-  "Apartamentos Blanco.com",
-  "Tigo1234",
+  "Mckode",
+  "mckg1697",
   "3.84.5.159",
   "mcu",
   "Rb63H7T8KMmi",
@@ -107,7 +107,7 @@ byte readMeasuresFromSlave(){
 }
 
 void sendMQTTMeasures(byte temp, byte humidity){
-  const String messageToSend = String(temp)+","+String(humidity);
+  const String messageToSend = "["+String(temp)+","+String(humidity)+"]";
   Serial.println("Sending measures to MQTT");
   Serial.println(messageToSend);
   client.publish(topicMeasures, messageToSend);
