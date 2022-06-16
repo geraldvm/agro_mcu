@@ -1,7 +1,7 @@
-import { Laboratorio } from './laboratorio';
+import { DataPar } from './laboratorio';
 
-describe('Laboratorio', () => {
+describe('DataPar', () => {
   it('should create an instance', () => {
-    expect(new Laboratorio()).toBeTruthy();
+    expect(new DataPar()).toBeTruthy();
   });
 });

@@ -1,7 +1,7 @@
-import { Curso } from './curso';
+import { Medida } from './curso';
 
-describe('Curso', () => {
+describe('Medida', () => {
   it('should create an instance', () => {
-    expect(new Curso()).toBeTruthy();
+    expect(new Medida()).toBeTruthy();
   });
 });

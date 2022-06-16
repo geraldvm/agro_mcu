@@ -1,4 +1,6 @@
-export class Curso {
-    codigoId:string;
-    nombre:string;
+export class Medida {
+    id : number;
+    temperatura : number;
+    humedad : number;
+    timeDate : Date; 
 }
