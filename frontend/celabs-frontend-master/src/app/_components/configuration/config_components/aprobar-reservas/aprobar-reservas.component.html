@@ -1,0 +1,39 @@
+<h1>Solicitudes de Palmadas</h1>
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+  <table class="table table-hover table-condensed text-center">
+    <thead>
+      <tr>
+        <th scope="col">Laboratorio</th>
+        <th scope="col">Hora Incial</th>
+        <th scope="col">Hora Final</th>
+        <th scope="col">Fecha Incial</th>
+        <th scope="col">Fecha Final</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody id="tableSearch">
+      <tr
+        *ngFor="
+          let reservaPendiente of reservasPendientes
+        "
+      >
+        <td>{{ reservaPendiente.idLaboratorio }}</td>
+        <td>{{ reservaPendiente.horaInicial }}</td>
+        <td>{{ reservaPendiente.horaFinal }}</td>
+        <td>{{ reservaPendiente.fechaInicial }}</td>
+        <td>{{ reservaPendiente.fechaFinal }}</td>
+        <td>
+          <div>
+            <input
+              class="btn btn-primary"
+              id="btn{{ reservaPendiente.id }}"
+              type="button"
+              value="Aprobar"
+              (click)="confirm(reservaPendiente.id)"
+            />
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

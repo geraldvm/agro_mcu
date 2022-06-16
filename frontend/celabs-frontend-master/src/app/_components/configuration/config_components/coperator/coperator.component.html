@@ -1,0 +1,156 @@
+<h1>Gestión de Operadores</h1>
+<button class="btn btn-primary mb-2" (click)="open(content)">
+  Añadir Operador
+</button>
+<div class="table-responsive">
+  <table class="table table-hover table-condensed text-center">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Identificación</th>
+        <th scope="col">Permisos de Operador</th>
+      </tr>
+    </thead>
+    <tbody id="tableSearch">
+      <tr *ngFor="let operator of operators">
+        <td>{{ operator.nombre }}</td>
+        <td>{{ operator.correo }}</td>
+        <td>{{ operator.id }}</td>
+        <td>
+          <div *ngIf="operator.permisos">
+            <input
+              class="btn btn-success"
+              id="btn{{ operator.id }}"
+              type="button"
+              value="Permitido"
+              (click)="checkValue(operator.id)"
+            />
+          </div>
+          <div *ngIf="!operator.permisos">
+            <input
+              class="btn btn-danger"
+              id="btn{{ operator.id }}"
+              type="button"
+              value="Denegado"
+              (click)="checkValue(operator.id)"
+            />
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <hr />
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Nuevo operador</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="addOperatorForm" class="form-group">
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label>Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nombre"
+            formControlName="name"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="name.invalid && name.touched"
+            role="alert"
+          >
+            Debe indicar un nombre válido.
+          </div>
+        </div>
+        <div class="form-group col-md-4">
+          <label>Primer Apellido</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Primer Apellido"
+            formControlName="middleName"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="middleName.invalid && middleName.touched"
+            role="alert"
+          >
+            Debe indicar un primer apellido válido.
+          </div>
+        </div>
+        <div class="form-group col-md-4">
+          <label>Segundo Apellido</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Segundo Apellido"
+            formControlName="lastName"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="lastName.invalid && lastName.touched"
+            role="alert"
+          >
+            Debe indicar un segundo apellido válido.
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Carné</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Carné"
+            formControlName="id"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="id.invalid && id.touched"
+            role="alert"
+          >
+            Debe indicar un carné válido.
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Nombre de usuario</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nombre de usuario (sin @estudiantec)"
+            formControlName="username"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="username.invalid && username.touched"
+            role="alert"
+          >
+            Debe indicar un nombre de usuario válido.
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      [disabled]="addOperatorForm.invalid"
+      class="btn btn-primary"
+      (click)="postNewOperator()"
+    >
+      Enviar
+    </button>
+  </div>
+</ng-template>

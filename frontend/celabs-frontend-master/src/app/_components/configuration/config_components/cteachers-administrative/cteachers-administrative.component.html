@@ -1,0 +1,51 @@
+<h1>Gestión de Docentes y Administrativos</h1>
+<button class="btn btn-primary mb-2" (click)="openRequests()">
+  Ver solicitudes pendientes  <span class="badge badge-light">{{ pending }} </span>
+</button>
+
+<div class="row">
+  <div class="col-12">
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+      <table class="table table-hover table-condensed text-center">
+        <thead style="position: sticky;">
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Identificación</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Permisos de administrador</th>
+          </tr>
+        </thead>
+        <tbody id="tableSearch">
+          <tr *ngFor="let teacherAdministrative of teachersAdministratives">
+            <td>{{ teacherAdministrative.nombre }}</td>
+            <td>{{ teacherAdministrative.id }}</td>
+            <td>{{ teacherAdministrative.correo }}</td>
+            <td>{{ teacherAdministrative.rol }}</td>
+            <td>
+              <div *ngIf="teacherAdministrative.permisos">
+                <input
+                  class="btn btn-success"
+                  id="btn{{ teacherAdministrative.id }}"
+                  type="button"
+                  value="Permitido"
+                  (click)="checkValue(teacherAdministrative.id)"
+                />
+              </div>
+              <div *ngIf="!teacherAdministrative.permisos">
+                <input
+                  class="btn btn-danger"
+                  id="btn{{ teacherAdministrative.id }}"
+                  type="button"
+                  value="Denegado"
+                  (click)="checkValue(teacherAdministrative.id)"
+                />
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <hr />
+  </div>
+</div>

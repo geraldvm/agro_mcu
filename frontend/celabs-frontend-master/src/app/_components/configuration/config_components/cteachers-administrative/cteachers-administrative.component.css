@@ -1,0 +1,22 @@
+h1 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.my-custom-scrollbar {
+  position: static;
+  height: 400px;
+  overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+  display: block;
+}
+
+th {
+  background: white;
+  position: sticky;
+  top: 0;
+  /* Don't forget this, required for the stickiness */
+}

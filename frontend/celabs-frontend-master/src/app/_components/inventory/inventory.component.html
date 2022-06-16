@@ -1,0 +1,86 @@
+<div class="container">
+  <div>
+    <button class="m-3 btn btn-primary" (click)="open(content)">
+      Configurar nuevo horario
+    </button>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <table class="table table-hover table-condensed text-center">
+        <thead>
+          <tr>
+            <th scope="col">Tiempo de inicio</th>
+            <th scope="col">Tiempo de espera</th>
+            <th scope="col">Día de la semana</th>
+          </tr>
+        </thead>
+        <tbody>
+          <td>{{start.hours}}hrs {{start.minutes}}min </td>
+          <td>{{timelapse}}</td>
+          <td>{{day}}</td>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">
+        Configurar nuevo horario
+      </h4>
+      <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="inventoryForm" class="form-group">
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label>Tiempo de inicio</label>
+            <select class="form-control" formControlName="projectors">
+              <option *ngFor="let hour of hours" [ngValue]="hour">
+                {{ hour }}
+              </option>
+            </select>
+            <select class="form-control" formControlName="projectors">
+              <option *ngFor="let min of mins" [ngValue]="min">
+                {{ min }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label>Tiempo de espera</label>
+            <select class="form-control" formControlName="chairs">
+              <option *ngFor="let lap of lapse" [ngValue]="lap">
+                {{ lap }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label>Día de la semana</label>
+            <select class="form-control" formControlName="extinguishers">
+              <option *ngFor="let w of week" [ngValue]="w">
+                {{ w }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        [disabled]="inventoryForm.invalid"
+        class="btn btn-primary"
+        (click)="put()"
+      >
+        Guardar
+      </button>
+    </div>
+  </ng-template>
+</div>

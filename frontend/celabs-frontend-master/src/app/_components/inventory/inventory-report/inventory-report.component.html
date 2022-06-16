@@ -1,0 +1,67 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">
+    Reporte de inventario
+  </h4>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-6 text-center">
+      <p><b>Reporte:</b> {{ inventory.report }}</p>
+      <p><b>Operador a cargo:</b> {{ inventory.operator }}</p>
+    </div>
+    <div class="col-6 text-center">
+      <p><b>Fecha:</b> {{ inventory.date }}</p>
+      <p><b>Laboratorio:</b> {{ inventory.laboratory }}</p>
+    </div>
+  </div>
+  <hr />
+  <div class="row mt-5">
+    <div class="col-12">
+      <p><b>Tabla 1: Desglose de activos</b></p>
+    </div>
+  </div>
+
+  <table #report class="table table-hover table-condensed text-center">
+    <thead>
+      <tr>
+        <th scope="col">Activo</th>
+        <th scope="col">Cantidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Computadoras completas</td>
+        <td>{{ inventory.completeComputers }}</td>
+      </tr>
+      <tr>
+        <td>Computadoras incompletas</td>
+        <td>{{ inventory.incompleteComputers }}</td>
+      </tr>
+      <tr>
+        <td>Proyectores</td>
+        <td>{{ inventory.projectors }}</td>
+      </tr>
+      <tr>
+        <td>Sillas</td>
+        <td>{{ inventory.chairs }}</td>
+      </tr>
+      <tr>
+        <td>Extintores</td>
+        <td>{{ inventory.extinguishers }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="download()">
+    Descargar reporte
+  </button>
+</div>

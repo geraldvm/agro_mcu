@@ -1,0 +1,142 @@
+<div class="container">
+  <div>
+    <button class="m-3 btn btn-primary" (click)="open(content)">
+      Añadir nuevo reporte de avería
+    </button>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <table class="table table-hover table-condensed text-center">
+        <thead>
+          <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Laboratorio</th>
+            <th scope="col">Responsable</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let failure of failures; index as i">
+            <td>{{ failure.fecha }} {{ failure.hora }}</td>
+            <td>{{ failure.laboratorio }}</td>
+            <td>{{ failure.responsable }}</td>
+            <td>{{ failure.descripcion }}</td>
+            <td>{{ failure.estado }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">
+        Nuevo reporte de avería
+      </h4>
+      <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="failuresForm" class="form-group">
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label>Operador a cargo</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Operador"
+              formControlName="operator"
+              readonly
+            />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label>Fecha</label>
+            <input
+              type="datetime-local"
+              class="form-control"
+              placeholder="Fecha"
+              formControlName="dateTime"
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="dateTime.invalid && dateTime.touched"
+              role="alert"
+            >
+              Debe seleccionar una fecha válida.
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <label>Laboratorio</label>
+            <select class="form-control" formControlName="laboratory">
+              <option
+                *ngFor="let laboratory of laboratories"
+                [ngValue]="laboratory"
+              >
+                {{ laboratory.nombre }}
+              </option>
+            </select>
+            <div
+              class="alert alert-danger"
+              *ngIf="laboratory.invalid && laboratory.touched"
+              role="alert"
+            >
+              Debe seleccionar un laboratorio.
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <label>Activo</label>
+            <select class="form-control" formControlName="asset">
+              <option *ngFor="let asset of assets" [ngValue]="asset">
+                {{ asset }}
+              </option>
+            </select>
+            <div
+              class="alert alert-danger"
+              *ngIf="asset.invalid && asset.touched"
+              role="alert"
+            >
+              Debe seleccionar un activo.
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label>Descripción</label>
+            <textarea
+              class="form-control"
+              rows="5"
+              placeholder="Descripción"
+              formControlName="description"
+            ></textarea>
+            <div
+              class="alert alert-danger"
+              *ngIf="description.invalid && description.touched"
+              role="alert"
+            >
+              Debe brindar una descripción.
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        [disabled]="failuresForm.invalid"
+        class="btn btn-primary"
+        (click)="post()"
+      >
+        Enviar
+      </button>
+    </div>
+  </ng-template>
+</div>

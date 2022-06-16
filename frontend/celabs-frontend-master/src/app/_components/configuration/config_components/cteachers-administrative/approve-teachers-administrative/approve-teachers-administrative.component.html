@@ -1,0 +1,52 @@
+<div class="modal-header">
+  <h4 class="modal-title">Aprobar solicitudes</h4>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="activeModal.close('Cross click')"
+  >
+  
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <h5>Solicitudes de docentes y administrativos</h5>
+  <div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-hover table-condensed text-center">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Identificación</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Rol</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody id="tableSearch">
+        <tr
+          *ngFor="
+            let pendingTeacherAdministrative of pendingTeachersAdministratives
+          "
+        >
+          <td>{{ pendingTeacherAdministrative.nombre }}</td>
+          <td>{{ pendingTeacherAdministrative.id }}</td>
+          <td>{{ pendingTeacherAdministrative.correo }}</td>
+          <td>{{ pendingTeacherAdministrative.rol }}</td>
+
+          <td>
+            <div>
+              <input
+                class="btn btn-primary"
+                id="btn{{ pendingTeacherAdministrative.id }}"
+                type="button"
+                value="Aceptar"
+                (click)="confirm(pendingTeacherAdministrative.id)"
+              />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

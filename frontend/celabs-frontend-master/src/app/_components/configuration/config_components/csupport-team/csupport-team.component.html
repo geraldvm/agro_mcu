@@ -1,0 +1,41 @@
+<h1>Gestión de Equipo de Apoyo</h1>
+<div class="table-responsive">
+  <table class="table table-hover table-condensed text-center">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Identificación</th>
+        <th scope="col">Permisos de Administrador</th>
+      </tr>
+    </thead>
+    <tbody id="tableSearch">
+      <tr *ngFor="let user of users">
+        <td>{{ user.nombre }}</td>
+        <td>{{ user.correo }}</td>
+        <td>{{ user.id }}</td>
+        <td>
+          <div *ngIf="user.permisos">
+            <input
+              class="btn btn-success"
+              id="btn{{ user.id }}"
+              type="button"
+              value="Permitido"
+              (click)="checkValue(user.id)"
+            />
+          </div>
+          <div *ngIf="!user.permisos">
+            <input
+              class="btn btn-danger"
+              id="btn{{ user.id }}"
+              type="button"
+              value="Denegado"
+              (click)="checkValue(user.id)"
+            />
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <hr />
+</div>

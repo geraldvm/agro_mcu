@@ -1,0 +1,81 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{ title }}</h4>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="hoursForm" class="form-group">
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label>Fecha del turno</label>
+        <input
+          type="date"
+          class="form-control"
+          placeholder="Fecha"
+          formControlName="date"
+        />
+        <div
+          class="alert alert-danger"
+          *ngIf="date.invalid && date.touched"
+          role="alert"
+        >
+          Debe seleccionar una fecha.
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label>Hora de inicio</label>
+        <input
+          type="time"
+          class="form-control"
+          placeholder="Hora de inicio"
+          formControlName="start"
+          [readonly]="date.invalid"
+        />
+        <div
+          class="alert alert-danger"
+          *ngIf="start.invalid && start.touched && date.valid"
+          role="alert"
+        >
+          Debe seleccionar una hora de inicio válida.
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label>Hora de finalización</label>
+        <input
+          type="time"
+          class="form-control"
+          placeholder="Hora de finalización"
+          formControlName="end"
+          [readonly]="start.invalid"
+        />
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            (end.invalid || !validTimes(start.value, end.value)) &&
+            end.touched &&
+            start.valid
+          "
+          role="alert"
+        >
+          Debe seleccionar una hora de finalización válida.
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    [disabled]="hoursForm.invalid || !validTimes(start.value, end.value)"
+    class="btn btn-primary"
+    (click)="post()"
+  >
+    Enviar
+  </button>
+</div>

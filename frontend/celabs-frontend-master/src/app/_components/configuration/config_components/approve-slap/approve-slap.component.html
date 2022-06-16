@@ -1,0 +1,40 @@
+    <h1>Solicitudes de Palmadas</h1>
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+      <table class="table table-hover table-condensed text-center">
+        <thead>
+          <tr>
+            <th scope="col">Operador</th>
+            <th scope="col">Laboratorio</th>
+            <th scope="col">Motivo</th>
+            <th scope="col">Fecha de Solicitud</th>
+            <th scope="col">Fecha de Palmada</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody id="tableSearch">
+          <tr
+            *ngFor="
+              let pendingSlap of pendingSlaps
+            "
+          >
+            <td>{{ pendingSlap.nombreCompleto }}</td>
+            <td>{{ pendingSlap.laboratorio }}</td>
+            <td>{{ pendingSlap.motivo }}</td>
+            <td>{{ pendingSlap.fechaSolicitud }}</td>
+            <td>{{ pendingSlap.fechaPalmada }}</td>
+            <td>
+              <div>
+                <input
+                  class="btn btn-primary"
+                  id="btn{{ pendingSlap.id }}"
+                  type="button"
+                  value="Aprobar"
+                  (click)="confirm(pendingSlap.id)"
+                />
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
