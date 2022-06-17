@@ -47,21 +47,6 @@ export class HoursComponent implements OnInit {
   }
 
   // Cuidado con el formato de las horas -> HH:MM
-  getMeasure() {
-    return [
-      {
-        id: 1,
-        fecha: new Date() ,
-        temperature: 25.1,
-        humidify:21
-      },{
-        id: 2,
-        fecha: new Date() ,
-        temperature: 25.1,
-        humidify:21
-      } 
-    ];
-  }
 
   
 }

@@ -15,9 +15,9 @@
           </tr>
         </thead>
         <tbody>
-          <td>{{start.hours}}hrs {{start.minutes}}min </td>
-          <td>{{timelapse}}</td>
-          <td>{{day}}</td>
+          <td>{{this.labService.param[0].startTime}} </td>
+          <td>{{this.labService.param[0].timelapse}}</td>
+          <td>{{weekJson[this.labService.param[0].weekday]}}</td>
         </tbody>
       </table>
     </div>

@@ -3,7 +3,6 @@ import { ApiService } from '../../api/api.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Medida } from '../../../_models/curso';
 import { ToastrService } from 'ngx-toastr';
-import { Observable, BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
