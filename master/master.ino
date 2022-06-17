@@ -31,8 +31,8 @@ const int TIMER_INTERRUPT_FREQ = 10000;
 
 // MQTT setup
 EspMQTTClient client(
-  "Apartamentos Blanco.com",
-  "Tigo1234",
+  "Mckode",
+  "mckg1697",
   "3.84.5.159",
   "mcu",
   "Rb63H7T8KMmi",
@@ -81,9 +81,17 @@ void loop()
   delay(300);
 
   if(doTimerInterrupt()){
-    temperature = readMeasuresFromSlave();
-    humidity = readMeasuresFromSlave();
-    sendMQTTMeasures(temperature, humidity);
+    Serial.println("Requesting 2 bytes from I2C Slave");
+    Wire.requestFrom(I2C_SLAVE, 2);
+    if(Wire.available() == 2){
+      temperature = Wire.read();
+      humidity = Wire.read();
+      sendMQTTMeasures(temperature, humidity);
+    }else if (Wire.available() == 1){
+      Serial.println("Only received 1 byte back");
+    }else{
+      Serial.println("There has been an error");
+    }
   }
 }
 
@@ -96,10 +104,10 @@ bool doTimerInterrupt(){
   return false;
 }
 
-byte readMeasuresFromSlave(){
+byte readMeasuresFromSlave(int byteQuantity=1){
   byte rcvData;
   Serial.println("I2C Request");
-  Wire.requestFrom(I2C_SLAVE, 1);
+  Wire.requestFrom(I2C_SLAVE, byteQuantity);
   if(Wire.available()){
     rcvData = Wire.read();
   }
@@ -107,7 +115,7 @@ byte readMeasuresFromSlave(){
 }
 
 void sendMQTTMeasures(byte temp, byte humidity){
-  const String messageToSend = String(temp)+","+String(humidity);
+  const String messageToSend = "["+String(temp)+","+String(humidity)+"]";
   Serial.println("Sending measures to MQTT");
   Serial.println(messageToSend);
   client.publish(topicMeasures, messageToSend);
