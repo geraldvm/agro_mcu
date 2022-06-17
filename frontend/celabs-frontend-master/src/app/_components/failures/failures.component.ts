@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TitleService } from 'src/app/_services/title.service';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { Laboratorio } from 'src/app/_models/laboratorio';
+import { DataPar } from 'src/app/_models/laboratorio';
 import { FormGroup } from '@angular/forms';
 import { FormGeneratorService } from 'src/app/_services/forms/form-generator.service';
 import { FormToJsonService } from 'src/app/_services/forms/form-to-json.service';
@@ -23,7 +23,7 @@ interface Failure {
 export class FailuresComponent implements OnInit {
 
   states: string[];
-  laboratories: Laboratorio[];
+  laboratories: DataPar[];
   assets: string[];
   failures: Failure[];
 
@@ -41,7 +41,6 @@ export class FailuresComponent implements OnInit {
   ngOnInit(): void {
     this.failures = this.getFailures();
     this.states = this.getStates();
-    this.laboratories = this.getLaboratories();
     this.assets = this.getAssets();
     this.failuresForm = this.formGenerator.createFailuresFrom(
       this.getOperator()
@@ -110,27 +109,7 @@ export class FailuresComponent implements OnInit {
     return ['CE1001', 'CE1002', 'CE1003'];
   }
 
-  getLaboratories(): Laboratorio[] {
-    return [{
-      codigo: 'F2-04',
-      id: 4
-    }, {
-      codigo: 'F2-05',
-      id: 5
-    }, {
-      codigo: 'F2-06',
-      id: 6
-    }, {
-      codigo: 'F2-07',
-      id: 7
-    }, {
-      codigo: 'F2-08',
-      id: 8
-    }, {
-      codigo: 'F2-09',
-      id: 9
-    }];
-  }
+  
 
   // POST
   post() {

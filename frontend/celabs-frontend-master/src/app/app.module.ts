@@ -41,6 +41,7 @@ import { AprobarReservasComponent } from './_components/configuration/config_com
 import { InventoryReportComponent } from './_components/inventory/inventory-report/inventory-report.component';
 import { DayAvailabilityComponent } from './_components/configuration/config_components/laboratory-availability/day-availability/day-availability.component';
 import { EmailComponent } from './_components/configuration/config_components/email/email.component';
+import { CoursesService } from './_services/api/configuration/courses.service';
 FullCalendarModule.registerPlugins([
   // register FullCalendar plugins
   timeGridPlugin,
@@ -95,6 +96,7 @@ FullCalendarModule.registerPlugins([
     UserService,
     AuthGuard,
     NgbActiveModal,
+    CoursesService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

@@ -1,6 +1,6 @@
 export class Medida {
-    id : number;
-    temperatura : number;
-    humedad : number;
-    timeDate : Date; 
+    idMeasure : number;
+    temperature : number;
+    humidity : number;
+    timeDate : string; 
 }

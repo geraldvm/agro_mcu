@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, EmailValidator, FormGroup } from '@angular/forms';
-import { Laboratorio } from '../../_models/laboratorio';
+import { Data } from '@angular/router';
+import { DataPar } from '../../_models/laboratorio';
 import { DateDisplayService } from '../date-display.service';
 import { FormValidatorService } from './form-validator.service';
 
@@ -57,7 +58,7 @@ export class FormGeneratorService {
     });
   }
 
-  public createReservationBaseForm(type: string, laboratory: Laboratorio, event: any): FormGroup {
+  public createReservationBaseForm(type: string, laboratory: DataPar, event: any): FormGroup {
     return this.formBuilder.group({
       title: ['', [
         Validators.required
@@ -65,9 +66,7 @@ export class FormGeneratorService {
       type: [type, [
         Validators.required
       ]],
-      laboratory: [laboratory.codigo, [
-        Validators.required
-      ]],
+      
       time: [this.dateDisplayService.getSingleDayDisplay(new Date(event.start), new Date(event.end)), [
         Validators.required
       ]]

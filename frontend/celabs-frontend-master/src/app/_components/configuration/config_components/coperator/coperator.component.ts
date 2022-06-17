@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TitleService } from 'src/app/_services/title.service';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { Laboratorio } from 'src/app/_models/laboratorio';
+import { DataPar } from 'src/app/_models/laboratorio';
 import { FormGeneratorService } from 'src/app/_services/forms/form-generator.service';
 import { FormGroup } from '@angular/forms';
 import { FormToJsonService } from 'src/app/_services/forms/form-to-json.service';
@@ -22,7 +22,6 @@ export class CoperatorComponent implements OnInit {
   buttonSuccess: string = 'btn btn-success';
 
   states: string[];
-  laboratories: Laboratorio[];
   operators: User[];
 
   addOperatorForm: FormGroup;
@@ -36,7 +35,6 @@ export class CoperatorComponent implements OnInit {
     this.titleService.setTitle('');
   }
   ngOnInit(): void {
-    this.laboratories = this.getLaboratories();
     this.operators = this.getOperators();
     this.states = this.getStates();
     this.addOperatorForm = this.formGenerator.createAddOperatorForm();
@@ -102,27 +100,6 @@ export class CoperatorComponent implements OnInit {
     return ['Pendiente de Atención', 'Completado', 'En proceso', 'Reportado'];
   }
 
-  getLaboratories(): Laboratorio[] {
-    return [{
-      codigo: 'F2-04',
-      id: 4
-    }, {
-      codigo: 'F2-05',
-      id: 5
-    }, {
-      codigo: 'F2-06',
-      id: 6
-    }, {
-      codigo: 'F2-07',
-      id: 7
-    }, {
-      codigo: 'F2-08',
-      id: 8
-    }, {
-      codigo: 'F2-09',
-      id: 9
-    }];
-  }
 
   getOperators() {
     return [{

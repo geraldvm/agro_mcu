@@ -2,13 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TitleService } from 'src/app/_services/title.service';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { HoursModalComponent } from './hours-modal/hours-modal.component';
+import { CoursesService } from 'src/app/_services/api/configuration/courses.service';
 
-interface measure {
-  id: number;
-  fecha: Date;
-  temperature: number;
-  humidify: number;
-}
 
 @Component({
   selector: 'app-hours',
@@ -16,17 +11,18 @@ interface measure {
   styleUrls: ['./hours.component.scss'],
 })
 export class HoursComponent implements OnInit {
-  measures: measure[];
+
 
   constructor(
     private titleService: TitleService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    public courseService : CoursesService
   ) {
     this.titleService.setTitle('Historial de medidas');
   }
 
   ngOnInit(): void {
-    this.measures = this.getMeasure();
+    this.courseService.getMedidas();
   
   }
 

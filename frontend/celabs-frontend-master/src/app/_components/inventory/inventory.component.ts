@@ -23,7 +23,7 @@ export class InventoryComponent implements OnInit {
   hours = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
   mins = [0,30];
   timelapse: number;
-  lapse = [1,2,3];
+  lapse = [5,10,15,20,25,30,35,40,45,50];
   weekday: number;
   week = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
   weekJson = {1:"Domingo", 2:"Lunes", 3:"Martes", 4:"Miércoles", 5:"Jueves", 6:"Viernes", 7:"Sábado"};
