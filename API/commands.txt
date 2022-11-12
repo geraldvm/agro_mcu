@@ -1,0 +1,18 @@
+npm init
+npm i express morgan
+npm i nodemon -D //Reiniciar el server en Development
+npm run dev //Run in development
+npm start
+REACT
+
+npx create-react-app react-tutorial
+npm start
+
+
+const fs = require('fs');
+
+fs.readFile('student.json', (err, data) => {
+    if (err) throw err;
+    let student = JSON.parse(data);
+    console.log(student);
+});

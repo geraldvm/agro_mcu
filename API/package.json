@@ -1,0 +1,31 @@
+{
+  "name": "agrobyte_api",
+  "version": "1.0.0",
+  "description": "In this API water meters can update his measures",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/server.js",
+    "dev": "nodemon ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geraldvm/agro_mcu.git"
+  },
+  "author": "Gerald V. Mc kenzie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/geraldvm/agro_mcu/issues"
+  },
+  "homepage": "https://github.com/geraldvm/agro_mcu#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "fs": "^0.0.1-security",
+    "https": "^1.0.0",
+    "morgan": "^1.10.0",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
