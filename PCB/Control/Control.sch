@@ -1,0 +1,506 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Control-rescue:WeMos_mini-wemos_mini U2
+U 1 1 5E48E7DF
+P 9050 4900
+F 0 "U2" H 9050 5643 60  0000 C CNN
+F 1 "WeMos_mini" H 9050 5537 60  0000 C CNN
+F 2 "Module:WEMOS_D1_mini_light" H 9600 4200 60  0001 C CNN
+F 3 "http://www.wemos.cc/Products/d1_mini.html" H 9050 5431 60  0000 C CNN
+	1    9050 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR0108
+U 1 1 5E4AB95A
+P 1450 950
+F 0 "#PWR0108" H 1450 800 50  0001 C CNN
+F 1 "+5V" H 1465 1123 50  0000 C CNN
+F 2 "" H 1450 950 50  0001 C CNN
+F 3 "" H 1450 950 50  0001 C CNN
+	1    1450 950 
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0110
+U 1 1 5E4ACA09
+P 1450 1400
+F 0 "#PWR0110" H 1450 1150 50  0001 C CNN
+F 1 "GND" H 1455 1227 50  0000 C CNN
+F 2 "" H 1450 1400 50  0001 C CNN
+F 3 "" H 1450 1400 50  0001 C CNN
+	1    1450 1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Screw_Terminal_01x02 J2
+U 1 1 5E4AE6A8
+P 1900 1050
+F 0 "J2" H 1980 1042 50  0000 L CNN
+F 1 "Screw_Terminal_01x02" H 1980 951 50  0000 L CNN
+F 2 "TerminalBlock_MetzConnect:TerminalBlock_MetzConnect_Type094_RT03502HBLU_1x02_P5.00mm_Horizontal" H 1900 1050 50  0001 C CNN
+F 3 "~" H 1900 1050 50  0001 C CNN
+	1    1900 1050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1450 950  1700 950 
+Wire Wire Line
+	1700 950  1700 1050
+Wire Wire Line
+	1700 1150 1450 1150
+Wire Wire Line
+	1450 1150 1450 1400
+$Comp
+L Switch:SW_Push_Dual RST1
+U 1 1 62A66F19
+P 1100 2400
+F 0 "RST1" H 1100 2685 50  0000 C CNN
+F 1 "SW_Push_Dual" H 1100 2594 50  0000 C CNN
+F 2 "Button_Switch_THT:Push_E-Switch_KS01Q01" H 1100 2600 50  0001 C CNN
+F 3 "~" H 1100 2600 50  0001 C CNN
+	1    1100 2400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0104
+U 1 1 62A6C58E
+P 900 2750
+F 0 "#PWR0104" H 900 2500 50  0001 C CNN
+F 1 "GND" H 905 2577 50  0000 C CNN
+F 2 "" H 900 2750 50  0001 C CNN
+F 3 "" H 900 2750 50  0001 C CNN
+	1    900  2750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	900  2600 900  2750
+$Comp
+L power:+5V #PWR0105
+U 1 1 62A82DB0
+P 1550 2000
+F 0 "#PWR0105" H 1550 1850 50  0001 C CNN
+F 1 "+5V" H 1565 2173 50  0000 C CNN
+F 2 "" H 1550 2000 50  0001 C CNN
+F 3 "" H 1550 2000 50  0001 C CNN
+	1    1550 2000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1550 2000 1550 2100
+$Comp
+L MCU_Microchip_ATmega:ATmega328-PU U1
+U 1 1 62A87D43
+P 2450 4550
+F 0 "U1" H 1806 4596 50  0000 R CNN
+F 1 "ATmega328-PU" H 1806 4505 50  0000 R CNN
+F 2 "Package_DIP:DIP-28_W7.62mm" H 2450 4550 50  0001 C CIN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/ATmega328_P%20AVR%20MCU%20with%20picoPower%20Technology%20Data%20Sheet%2040001984A.pdf" H 2450 4550 50  0001 C CNN
+	1    2450 4550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR0101
+U 1 1 62A92698
+P 2450 2900
+F 0 "#PWR0101" H 2450 2750 50  0001 C CNN
+F 1 "+5V" H 2465 3073 50  0000 C CNN
+F 2 "" H 2450 2900 50  0001 C CNN
+F 3 "" H 2450 2900 50  0001 C CNN
+	1    2450 2900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2450 2900 2450 3000
+Wire Wire Line
+	3450 4850 3450 2600
+Wire Wire Line
+	3050 4850 3450 4850
+$Comp
+L Device:R R1
+U 1 1 5E49209B
+P 1550 2250
+F 0 "R1" H 1620 2296 50  0000 L CNN
+F 1 "1k" H 1620 2205 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0411_L9.9mm_D3.6mm_P12.70mm_Horizontal" V 1480 2250 50  0001 C CNN
+F 3 "~" H 1550 2250 50  0001 C CNN
+	1    1550 2250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1550 2400 1550 2600
+Wire Wire Line
+	1550 2600 1300 2600
+Wire Wire Line
+	3450 2600 1550 2600
+Connection ~ 1550 2600
+$Comp
+L power:GND #PWR0111
+U 1 1 62AA096C
+P 2450 6150
+F 0 "#PWR0111" H 2450 5900 50  0001 C CNN
+F 1 "GND" H 2455 5977 50  0000 C CNN
+F 2 "" H 2450 6150 50  0001 C CNN
+F 3 "" H 2450 6150 50  0001 C CNN
+	1    2450 6150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2450 6050 2450 6150
+Connection ~ 2450 3000
+Wire Wire Line
+	2450 3000 2450 3050
+Wire Wire Line
+	2550 3050 2550 3000
+Wire Wire Line
+	2450 3000 2550 3000
+$Comp
+L Device:Crystal Y1
+U 1 1 62AA697B
+P 3900 3800
+F 0 "Y1" H 3900 4068 50  0000 C CNN
+F 1 "Crystal" H 3900 3977 50  0000 C CNN
+F 2 "Crystal:Crystal_HC52-6mm_Vertical" H 3900 3800 50  0001 C CNN
+F 3 "~" H 3900 3800 50  0001 C CNN
+	1    3900 3800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3750 3800 3600 3800
+Wire Wire Line
+	3250 3800 3250 3950
+Wire Wire Line
+	3250 3950 3050 3950
+Wire Wire Line
+	4050 3800 4100 3800
+Wire Wire Line
+	4100 3800 4100 4050
+Wire Wire Line
+	4100 4050 3050 4050
+$Comp
+L Device:C C1
+U 1 1 62ABA13F
+P 3600 3650
+F 0 "C1" H 3715 3696 50  0000 L CNN
+F 1 "C" H 3715 3605 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm" H 3638 3500 50  0001 C CNN
+F 3 "~" H 3600 3650 50  0001 C CNN
+	1    3600 3650
+	1    0    0    -1  
+$EndComp
+Connection ~ 3600 3800
+Wire Wire Line
+	3600 3800 3250 3800
+$Comp
+L Device:C C2
+U 1 1 62ABAC9E
+P 4100 3650
+F 0 "C2" H 4215 3696 50  0000 L CNN
+F 1 "C" H 4215 3605 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm" H 4138 3500 50  0001 C CNN
+F 3 "~" H 4100 3650 50  0001 C CNN
+	1    4100 3650
+	1    0    0    -1  
+$EndComp
+Connection ~ 4100 3800
+Wire Wire Line
+	4100 3500 3900 3500
+$Comp
+L power:GND #PWR0112
+U 1 1 62ABDB93
+P 3900 3400
+F 0 "#PWR0112" H 3900 3150 50  0001 C CNN
+F 1 "GND" H 3905 3227 50  0000 C CNN
+F 2 "" H 3900 3400 50  0001 C CNN
+F 3 "" H 3900 3400 50  0001 C CNN
+	1    3900 3400
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3900 3400 3900 3500
+Connection ~ 3900 3500
+Wire Wire Line
+	3900 3500 3600 3500
+$Comp
+L Graphic:Logo_Open_Hardware_Large #LOGO1
+U 1 1 62A8012A
+P 8600 1850
+F 0 "#LOGO1" H 8600 2350 50  0001 C CNN
+F 1 "Logo_Open_Hardware_Large" H 8600 1450 50  0001 C CNN
+F 2 "" H 8600 1850 50  0001 C CNN
+F 3 "~" H 8600 1850 50  0001 C CNN
+	1    8600 1850
+	1    0    0    -1  
+$EndComp
+$Comp
+L BOB-12009:BOB-12009 U3
+U 1 1 62A7DA6D
+P 6350 4400
+F 0 "U3" H 6350 3733 50  0000 C CNN
+F 1 "BOB-12009" H 6350 3824 50  0000 C CNN
+F 2 "BOB-12009:CONV_BOB-12009" H 6350 4400 50  0001 L BNN
+F 3 "" H 6350 4400 50  0001 L BNN
+F 4 "01" H 6350 4400 50  0001 L BNN "PARTREV"
+F 5 "SparkFun Electronics" H 6350 4400 50  0001 L BNN "MANUFACTURER"
+F 6 "N/A" H 6350 4400 50  0001 L BNN "MAXIMUM_PACKAGE_HEIGHT"
+F 7 "Manufacturer Recommendations" H 6350 4400 50  0001 L BNN "STANDARD"
+	1    6350 4400
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:+3.3V #PWR0102
+U 1 1 62A8FCF1
+P 9700 4200
+F 0 "#PWR0102" H 9700 4050 50  0001 C CNN
+F 1 "+3.3V" H 9715 4373 50  0000 C CNN
+F 2 "" H 9700 4200 50  0001 C CNN
+F 3 "" H 9700 4200 50  0001 C CNN
+	1    9700 4200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9700 4200 9700 4550
+Wire Wire Line
+	9700 4550 9550 4550
+$Comp
+L power:+5V #PWR0103
+U 1 1 62A9397A
+P 8500 4300
+F 0 "#PWR0103" H 8500 4150 50  0001 C CNN
+F 1 "+5V" H 8515 4473 50  0000 C CNN
+F 2 "" H 8500 4300 50  0001 C CNN
+F 3 "" H 8500 4300 50  0001 C CNN
+	1    8500 4300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0106
+U 1 1 62A94097
+P 8400 4650
+F 0 "#PWR0106" H 8400 4400 50  0001 C CNN
+F 1 "GND" H 8405 4477 50  0000 C CNN
+F 2 "" H 8400 4650 50  0001 C CNN
+F 3 "" H 8400 4650 50  0001 C CNN
+	1    8400 4650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8550 4650 8400 4650
+Wire Wire Line
+	8550 4550 8500 4550
+Wire Wire Line
+	8500 4550 8500 4300
+$Comp
+L power:+3.3V #PWR0107
+U 1 1 62A977F5
+P 7400 4700
+F 0 "#PWR0107" H 7400 4550 50  0001 C CNN
+F 1 "+3.3V" H 7415 4873 50  0000 C CNN
+F 2 "" H 7400 4700 50  0001 C CNN
+F 3 "" H 7400 4700 50  0001 C CNN
+	1    7400 4700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7400 4700 7050 4700
+$Comp
+L power:+5V #PWR0109
+U 1 1 62A9B8F9
+P 5400 4700
+F 0 "#PWR0109" H 5400 4550 50  0001 C CNN
+F 1 "+5V" H 5415 4873 50  0000 C CNN
+F 2 "" H 5400 4700 50  0001 C CNN
+F 3 "" H 5400 4700 50  0001 C CNN
+	1    5400 4700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5650 4700 5400 4700
+Wire Wire Line
+	3050 4650 4800 4650
+$Comp
+L power:GND #PWR0113
+U 1 1 62AA7EA0
+P 5500 4000
+F 0 "#PWR0113" H 5500 3750 50  0001 C CNN
+F 1 "GND" H 5505 3827 50  0000 C CNN
+F 2 "" H 5500 4000 50  0001 C CNN
+F 3 "" H 5500 4000 50  0001 C CNN
+	1    5500 4000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5650 4000 5500 4000
+$Comp
+L Connector:Screw_Terminal_01x03 soil_sens1
+U 1 1 62AB809E
+P 3250 1000
+F 0 "soil_sens1" V 3214 812 50  0000 R CNN
+F 1 "Screw_Terminal_01x03" V 3123 812 50  0000 R CNN
+F 2 "TerminalBlock_MetzConnect:TerminalBlock_MetzConnect_Type011_RT05503HBWC_1x03_P5.00mm_Horizontal" H 3250 1000 50  0001 C CNN
+F 3 "~" H 3250 1000 50  0001 C CNN
+	1    3250 1000
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:Screw_Terminal_01x03 temp_sens1
+U 1 1 62AC3351
+P 4600 950
+F 0 "temp_sens1" V 4564 762 50  0000 R CNN
+F 1 "Screw_Terminal_01x03" V 4473 762 50  0000 R CNN
+F 2 "TerminalBlock_MetzConnect:TerminalBlock_MetzConnect_Type011_RT05503HBWC_1x03_P5.00mm_Horizontal" H 4600 950 50  0001 C CNN
+F 3 "~" H 4600 950 50  0001 C CNN
+	1    4600 950 
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:+5V #PWR0114
+U 1 1 62AC54E5
+P 5050 1000
+F 0 "#PWR0114" H 5050 850 50  0001 C CNN
+F 1 "+5V" H 5065 1173 50  0000 C CNN
+F 2 "" H 5050 1000 50  0001 C CNN
+F 3 "" H 5050 1000 50  0001 C CNN
+	1    5050 1000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0115
+U 1 1 62ACBE34
+P 3250 1350
+F 0 "#PWR0115" H 3250 1100 50  0001 C CNN
+F 1 "GND" H 3255 1177 50  0000 C CNN
+F 2 "" H 3250 1350 50  0001 C CNN
+F 3 "" H 3250 1350 50  0001 C CNN
+	1    3250 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0116
+U 1 1 62ACCA08
+P 4600 1300
+F 0 "#PWR0116" H 4600 1050 50  0001 C CNN
+F 1 "GND" H 4605 1127 50  0000 C CNN
+F 2 "" H 4600 1300 50  0001 C CNN
+F 3 "" H 4600 1300 50  0001 C CNN
+	1    4600 1300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4600 1150 4600 1300
+Wire Wire Line
+	4700 1150 4700 1300
+Wire Wire Line
+	4700 1300 5050 1300
+Wire Wire Line
+	5050 1300 5050 1000
+Wire Wire Line
+	3250 1200 3250 1350
+$Comp
+L power:+5V #PWR0117
+U 1 1 62AD32EA
+P 3650 1050
+F 0 "#PWR0117" H 3650 900 50  0001 C CNN
+F 1 "+5V" H 3665 1223 50  0000 C CNN
+F 2 "" H 3650 1050 50  0001 C CNN
+F 3 "" H 3650 1050 50  0001 C CNN
+	1    3650 1050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3650 1350 3650 1050
+Wire Wire Line
+	3350 1200 3350 1350
+Wire Wire Line
+	3350 1350 3650 1350
+Wire Wire Line
+	3150 1200 3150 4250
+Wire Wire Line
+	3150 4250 3050 4250
+$Comp
+L Device:R R2
+U 1 1 62ADA3EE
+P 4450 1650
+F 0 "R2" H 4520 1696 50  0000 L CNN
+F 1 "1k" H 4520 1605 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0411_L9.9mm_D3.6mm_P12.70mm_Horizontal" V 4380 1650 50  0001 C CNN
+F 3 "~" H 4450 1650 50  0001 C CNN
+	1    4450 1650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4500 1150 4500 1450
+Wire Wire Line
+	4500 1500 4450 1500
+Wire Wire Line
+	4450 1800 5050 1800
+Wire Wire Line
+	5050 1800 5050 1300
+Connection ~ 5050 1300
+Wire Wire Line
+	3050 3450 3550 3450
+Wire Wire Line
+	3550 3450 3550 1700
+Wire Wire Line
+	3550 1700 4300 1700
+Wire Wire Line
+	4300 1700 4300 1450
+Wire Wire Line
+	4300 1450 4500 1450
+Connection ~ 4500 1450
+Wire Wire Line
+	4500 1450 4500 1500
+$Comp
+L Connector:Screw_Terminal_01x02 Relay1
+U 1 1 62AFC80B
+P 4150 5250
+F 0 "Relay1" H 4230 5242 50  0000 L CNN
+F 1 "Screw_Terminal_01x02" H 4230 5151 50  0000 L CNN
+F 2 "TerminalBlock_MetzConnect:TerminalBlock_MetzConnect_Type055_RT01502HDWU_1x02_P5.00mm_Horizontal" H 4150 5250 50  0001 C CNN
+F 3 "~" H 4150 5250 50  0001 C CNN
+	1    4150 5250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3050 3550 3500 3550
+Wire Wire Line
+	3500 3550 3500 5250
+Wire Wire Line
+	3500 5250 3950 5250
+Wire Wire Line
+	7150 5050 8550 5050
+Wire Wire Line
+	7300 4950 8550 4950
+Wire Wire Line
+	5650 4500 4800 4500
+Wire Wire Line
+	4800 4500 4800 4650
+Wire Wire Line
+	5650 4400 4950 4400
+Wire Wire Line
+	4950 4400 4950 4750
+Wire Wire Line
+	3050 4750 4950 4750
+Wire Wire Line
+	7300 4950 7300 4500
+Wire Wire Line
+	7300 4500 7050 4500
+Wire Wire Line
+	7150 5050 7150 4400
+Wire Wire Line
+	7150 4400 7050 4400
+$EndSCHEMATC
